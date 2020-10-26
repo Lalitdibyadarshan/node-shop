@@ -1,0 +1,37 @@
+<%- include('../includes/header.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
+<link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main class="container-card">
+        <% if(errorMessage) { %>
+        <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
+        <section class="form-title">
+            <h1>Login</h1>
+        </section>
+        <div class="auth-form">
+            <form action="/auth/login" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <div class="form-container">
+                    <label for="email">Email :</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="form-container">
+                    <label for="password">Password :</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div>
+                    <button type="submit" class="btn">Login</button>
+                </div>
+
+            </form>
+            <a href="/auth/reset" class="centered">
+                <div>reset your password</div>
+            </a>
+        </div>
+    </main>
+
+    <%- include('../includes/footer.ejs') %>
